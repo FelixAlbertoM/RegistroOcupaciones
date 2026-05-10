@@ -1,4 +1,4 @@
-package edu.ucne.registroocupaciones.presentation.ocupaciones.edit
+package edu.ucne.registroocupaciones.presentation.ocupacion.edit
 
 sealed interface OcupacionEditUIEvent {
     data class Load(val id: Int?) : OcupacionEditUIEvent

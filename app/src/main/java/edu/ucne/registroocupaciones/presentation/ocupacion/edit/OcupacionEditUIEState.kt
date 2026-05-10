@@ -1,6 +1,4 @@
-package edu.ucne.registroocupaciones.presentation.ocupaciones.edit
-
-import android.adservices.adid.AdId
+package edu.ucne.registroocupaciones.presentation.ocupacion.edit
 
 data class OcupacionEditUIEState (
     val ocupacionId: Int? = null,
