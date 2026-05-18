@@ -12,6 +12,10 @@ import edu.ucne.registroocupaciones.data.local.dao.OcupacionDao
 import edu.ucne.registroocupaciones.domain.ocupacion.repository.OcupacionRepository
 import edu.ucne.registroocupaciones.data.repository.OcupacionRepositoryImpl
 import javax.inject.Singleton
+import edu.ucne.registroocupaciones.domain.empleado.repository.EmpleadoRepository
+import edu.ucne.registroocupaciones.data.repository.EmpleadoRepositoryImpl
+import edu.ucne.registroocupaciones.data.local.dao.EmpleadoDao
+
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -25,7 +29,7 @@ object AppModule {
             appContext,
             OcupacionDb::class.java,
             "OcupacionDb"
-        ).fallbackToDestructiveMigration(false)
+        ).fallbackToDestructiveMigration(false )
             .build()
     }
 
@@ -44,6 +48,24 @@ object AppModule {
     @Provides
     @Singleton
     fun provideOcupacionRepository(impl: OcupacionRepositoryImpl): OcupacionRepository {
+        return impl
+    }
+
+    @Provides
+    @Singleton
+    fun provideEmpleadoDao(ocupacionDb: OcupacionDb): EmpleadoDao {
+        return ocupacionDb.empleadoDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideEmpleadoRepositoryImpl(empleadoDao: EmpleadoDao): EmpleadoRepositoryImpl {
+        return EmpleadoRepositoryImpl(empleadoDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEmpleadoRepository(impl: EmpleadoRepositoryImpl): EmpleadoRepository {
         return impl
     }
 }
