@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
+import androidx.compose.material.icons.filled.People
 
 @Composable
 fun DrawerMenu(
@@ -68,6 +69,15 @@ fun DrawerMenu(
                             isSelected = selectedItem.value == "Ocupaciones"
                         ) {
                             handleItemClick(Screen.OcupacionList, "Ocupaciones")
+                        }
+                    }
+                    item {
+                        DrawerItem(
+                            title = "Empleados",
+                            icon = Icons.Filled.People,
+                            isSelected = selectedItem.value == "Empleados"
+                        ) {
+                            handleItemClick(Screen.EmpleadoList, "Empleados")
                         }
                     }
                 }
