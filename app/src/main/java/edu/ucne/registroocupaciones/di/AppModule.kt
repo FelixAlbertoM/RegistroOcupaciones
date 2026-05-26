@@ -15,7 +15,9 @@ import javax.inject.Singleton
 import edu.ucne.registroocupaciones.domain.empleado.repository.EmpleadoRepository
 import edu.ucne.registroocupaciones.data.repository.EmpleadoRepositoryImpl
 import edu.ucne.registroocupaciones.data.local.dao.EmpleadoDao
-
+import edu.ucne.registroocupaciones.domain.horaextra.repository.HoraExtraRepository
+import edu.ucne.registroocupaciones.data.repository.HoraExtraRepositoryImpl
+import edu.ucne.registroocupaciones.data.local.dao.HoraExtraDao
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -66,6 +68,24 @@ object AppModule {
     @Provides
     @Singleton
     fun provideEmpleadoRepository(impl: EmpleadoRepositoryImpl): EmpleadoRepository {
+        return impl
+    }
+
+    @Provides
+    @Singleton
+    fun provideHoraExtraDao(ocupacionDb: OcupacionDb): HoraExtraDao {
+        return ocupacionDb.horaExtraDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideHoraExtraRepositoryImpl(horaExtraDao: HoraExtraDao): HoraExtraRepositoryImpl {
+        return HoraExtraRepositoryImpl(horaExtraDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideHoraExtraRepository(impl: HoraExtraRepositoryImpl): HoraExtraRepository {
         return impl
     }
 }
