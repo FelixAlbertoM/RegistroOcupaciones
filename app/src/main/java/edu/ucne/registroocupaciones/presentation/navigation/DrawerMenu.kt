@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.AccessTime
 
 @Composable
 fun DrawerMenu(
@@ -78,6 +79,15 @@ fun DrawerMenu(
                             isSelected = selectedItem.value == "Empleados"
                         ) {
                             handleItemClick(Screen.EmpleadoList, "Empleados")
+                        }
+                    }
+                    item {
+                        DrawerItem(
+                            title = "Horas Extras",
+                            icon = Icons.Filled.AccessTime,
+                            isSelected = selectedItem.value == "Horas Extras"
+                        ) {
+                            handleItemClick(Screen.HoraExtraList, "Horas Extras")
                         }
                     }
                 }
